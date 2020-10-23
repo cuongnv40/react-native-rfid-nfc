@@ -85,45 +85,46 @@ public class ReactNativeNFCModule extends ReactContextBaseJavaModule
      * @param nfcAdapter The {@link NfcAdapter} used for the foreground dispatch.
      */
     public static void setupForegroundDispatch(final Activity activity, NfcAdapter nfcAdapter) {
+        if (activity != null){
+            final Intent intent = new Intent(activity.getApplicationContext(), activity.getClass());
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
-        final Intent intent = new Intent(activity.getApplicationContext(), activity.getClass());
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
- 
-        final PendingIntent pendingIntent = PendingIntent.getActivity(
-                activity.getApplicationContext(), 0, intent, 0);
- 
-        IntentFilter[] filters = new IntentFilter[3];
+            final PendingIntent pendingIntent = PendingIntent.getActivity(
+                    activity.getApplicationContext(), 0, intent, 0);
 
-        String[] filterNames = new String[]{
-            NfcAdapter.ACTION_NDEF_DISCOVERED,
-            NfcAdapter.ACTION_TAG_DISCOVERED,
-            NfcAdapter.ACTION_TECH_DISCOVERED
-        };
+            IntentFilter[] filters = new IntentFilter[3];
 
-        int pos = 0;
+            String[] filterNames = new String[]{
+                    NfcAdapter.ACTION_NDEF_DISCOVERED,
+                    NfcAdapter.ACTION_TAG_DISCOVERED,
+                    NfcAdapter.ACTION_TECH_DISCOVERED
+            };
 
-        for(String filter : filterNames){
-            filters[pos] = new IntentFilter();
-            filters[pos].addAction(filter);
-            if(filter.equals(NfcAdapter.ACTION_NDEF_DISCOVERED)){
-                Log.d("NFC_PLUGIN_LOG", filter + " gets a mime type added to it");
-                try {
-                    filters[pos].addCategory(Intent.CATEGORY_DEFAULT);
-                    filters[pos].addDataType("*/*");
-                } catch (MalformedMimeTypeException e) {
-                    Log.d("NFC_PLUGIN_LOG", "Check your mime type");
-                    throw new RuntimeException("Check your mime type.");
+            int pos = 0;
+
+            for(String filter : filterNames){
+                filters[pos] = new IntentFilter();
+                filters[pos].addAction(filter);
+                if(filter.equals(NfcAdapter.ACTION_NDEF_DISCOVERED)){
+                    Log.d("NFC_PLUGIN_LOG", filter + " gets a mime type added to it");
+                    try {
+                        filters[pos].addCategory(Intent.CATEGORY_DEFAULT);
+                        filters[pos].addDataType("*/*");
+                    } catch (MalformedMimeTypeException e) {
+                        Log.d("NFC_PLUGIN_LOG", "Check your mime type");
+                        throw new RuntimeException("Check your mime type.");
+                    }
                 }
+                pos++;
             }
-            pos++;
-        }
-        
-        try{
-            Log.d("NFC_PLUGIN_LOG", "Starting Foreground Dispatch");
-            nfcAdapter.enableForegroundDispatch(activity, pendingIntent, filters, techList);
-        }catch(Exception e){
-            Log.d("NFC_PLUGIN_LOG", "Failed enabling forground dispatch from permissions");
-            Log.e("NFC_PLUGIN_LOG", e.toString());
+
+            try{
+                Log.d("NFC_PLUGIN_LOG", "Starting Foreground Dispatch");
+                nfcAdapter.enableForegroundDispatch(activity, pendingIntent, filters, techList);
+            }catch(Exception e){
+                Log.d("NFC_PLUGIN_LOG", "Failed enabling forground dispatch from permissions");
+                Log.e("NFC_PLUGIN_LOG", e.toString());
+            }
         }
     }
 
@@ -206,7 +207,7 @@ public class ReactNativeNFCModule extends ReactContextBaseJavaModule
         if(adapter != null) {
             if (adapter.isEnabled()) {
                 // Log.d("NFC_PLUGIN_LOG", "Reader should be started here, but not sure if that is how this works");
-                setupForegroundDispatch(getCurrentActivity(), adapter);
+                setupForegroundDispatch(getActivity(), adapter);
                 sendResponseEvent(EVENT_NFC_ENABLED, null);
             }else{
                 sendResponseEvent(EVENT_NFC_MISSING, null);
