@@ -1,6 +1,6 @@
 # Reading NFC tags for React Native (Android and iOS)
 
-This project has the goal of making it easy (or easier) to scan NFC tags and read the NDEF records they contain. This is forked from the project [react-native-rfid-nfc](https://github.com/SMARTRACTECHNOLOGY/react-native-rfid-nfc) by [SMARTRACTECHNOLOGY](https://github.com/SMARTRACTECHNOLOGY).
+This project forked from the project [react-native-rfid-nfc-scanner] (https://github.com/joeldiaz2302/react-native-rfid-nfc)
 
 To read the NDEF data it makes use of the library **[ndef-tools-for-android](https://github.com/skjolber/ndef-tools-for-android)**.
 
@@ -12,14 +12,14 @@ This library is compatible and was tested with React Native projects with versio
 
 Install the plugin via NPM:
 ```
-$ npm install react-native-rfid-nfc-scanner --save
+$ npm install react-native-rfid-equipment --save
 
 ```
 
 and then link it:
 
 ```
-$ react-native link react-native-rfid-nfc-scanner
+$ react-native link react-native-rfid-equipment
 ```
 
 ## iOS Configuration
@@ -120,7 +120,7 @@ There are 2 ways to use this component. You can use the controller or the underl
 To use the NfcRfidScanner class import and create one:
 
 ```javascript
-import {NfcRfidScanner} from "react-native-rfid-nfc-scanner";
+import {NfcRfidScanner} from "react-native-rfid-equipment";
 
 const scanner = new NfcRfidScanner();
 

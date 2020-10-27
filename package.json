@@ -1,8 +1,8 @@
 {
-  "name": "react-native-rfid-nfc-scanner",
+  "name": "react-native-rfid-equipment",
   "description": "A simplified, expanded and unified NFC scanner plugin for react native.",
   "license": "MIT",
-  "homepage": "https://github.com/joeldiaz2302/react-native-rfid-nfc",
+  "homepage": "https://github.com/cuongnv40/react-native-rfid-nfc",
   "version": "1.2.0",
   "main": "index.js",
   "keywords": [
@@ -16,11 +16,11 @@
     "native"
   ],
   "bugs": {
-    "url": "https://github.com/joeldiaz2302/react-native-rfid-nfc/issues"
+    "url": "https://github.com/cuongnv40/react-native-rfid-nfc/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joeldiaz2302/react-native-rfid-nfc.git"
+    "url": "git+https://github.com/cuongnv40/react-native-rfid-nfc.git"
   },
   "devDependencies": {
     "react-native": "0.40.0"
@@ -29,11 +29,11 @@
     "react-native": ">=0.40.0"
   },
   "nativePackage": true,
-  "author": "Joel Diaz",
+  "author": "CuongNV40",
   "contributors": [
     {
-      "name": "Joel Diaz",
-      "url": "https://github.com/joeldiaz2302"
+      "name": "CuongNV40",
+      "url": "https://github.com/cuongnv40"
     }
   ],
   "scripts": {
