@@ -1,9 +1,9 @@
 {
-  "name": "react-native-rfid-equipment",
+  "name": "react-native-rfid-equipments",
   "description": "A simplified, expanded and unified NFC scanner plugin for react native.",
   "license": "MIT",
   "homepage": "https://github.com/cuongnv40/react-native-rfid-nfc",
-  "version": "1.2.0",
+  "version": "1.0.1",
   "main": "index.js",
   "keywords": [
     "react-native",

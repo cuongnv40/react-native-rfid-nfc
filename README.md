@@ -12,14 +12,14 @@ This library is compatible and was tested with React Native projects with versio
 
 Install the plugin via NPM:
 ```
-$ npm install react-native-rfid-equipment --save
+$ npm install react-native-rfid-equipments --save
 
 ```
 
 and then link it:
 
 ```
-$ react-native link react-native-rfid-equipment
+$ react-native link react-native-rfid-equipments
 ```
 
 ## iOS Configuration
@@ -120,7 +120,7 @@ There are 2 ways to use this component. You can use the controller or the underl
 To use the NfcRfidScanner class import and create one:
 
 ```javascript
-import {NfcRfidScanner} from "react-native-rfid-equipment";
+import {NfcRfidScanner} from "react-native-rfid-equipments";
 
 const scanner = new NfcRfidScanner();
 
